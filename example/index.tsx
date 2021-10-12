@@ -1,24 +1,7 @@
-# React collapsible component
-
-Lightwight collapsible wrapper that is easy to use and customizable.
-
-## Install
-
-```bash
-npm i react-collapsible-wrapper
-```
-
-## Options
-
-- isOpen (`required`) Tells the wrapper if it should collapse or not
-- duration (default `is calculated based on content`) Transition duration in seconds
-- easing (default `linear`) - Acceleration curve for transition
-
-## Simple Example:
-
-```jsx
 import React, { useState } from "react";
-import Collapse from "react-collapsible-wrapper";
+import { render } from "react-dom";
+import Collapse from "../dist";
+import "./style.css";
 
 const ExampleComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,7 +15,11 @@ const ExampleComponent = () => {
         been the industrys standard dummy text ever since the 1500s
       </p>
 
-      <Collapse isOpen={isOpen}>
+      <Collapse
+        onTransitionEnd={(e) => console.log(e)}
+        className="collapse-container"
+        isOpen={isOpen}
+      >
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas, mi vel ultrices
           lacinia, lacus nibh vestibulum nunc, ac fringilla nisl magna tempor mi.
@@ -50,5 +37,4 @@ const ExampleComponent = () => {
   );
 };
 
-export default ExampleComponent;
-```
+render(<ExampleComponent />, document.getElementById("react"));

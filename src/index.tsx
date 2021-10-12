@@ -1,22 +1,39 @@
-import React, { useRef, FunctionComponent, RefObject, ReactElement } from "react";
+import React, { useRef, FunctionComponent, RefObject, ReactElement, CSSProperties } from "react";
 
-interface Options {
-  isOpen: boolean;
-  duration?: number;
-  easing?: string;
+enum tagName {
+  "div",
+  "article",
+  "section",
+  "ul",
+  "ol",
+  "li",
+}
+type Options = {
   children: ReactElement | ReactElement[];
-}
-
-interface createPropsProps {
   isOpen: boolean;
   duration?: number;
   easing?: string;
-  ref: RefObject<HTMLDivElement>;
-}
+  className?: string;
+  style?: CSSProperties;
+  tagName?: keyof typeof tagName;
+  onTransitionEnd?: React.TransitionEventHandler<HTMLElement>;
+  onChange?: React.FormEventHandler<HTMLElement>;
+};
+
+type createPropsProps = Options & {
+  ref: RefObject<HTMLElement>;
+};
 
 const defaultStyle = { maxHeight: 0, overflow: "hidden" };
 
-const createProps = ({ isOpen, duration, easing, ref }: createPropsProps): any => {
+const createProps = ({
+  isOpen,
+  duration,
+  easing,
+  className,
+  style,
+  ref,
+}: createPropsProps): any => {
   let transition;
 
   if (ref.current) {
@@ -26,21 +43,28 @@ const createProps = ({ isOpen, duration, easing, ref }: createPropsProps): any =
   if (isOpen) {
     return {
       "aria-hidden": "false",
-      style: { ...defaultStyle, transition, maxHeight: ref.current?.scrollHeight + "px" },
+      className,
+      style: { ...style, ...defaultStyle, transition, maxHeight: ref.current?.scrollHeight + "px" },
     };
   } else {
-    return { "aria-hidden": "true", style: { ...defaultStyle, transition } };
+    return { "aria-hidden": "true", className, style: { ...style, ...defaultStyle, transition } };
   }
 };
 
-const Collapse: FunctionComponent<Options> = ({ isOpen, duration, easing, children }) => {
+const Collapse: FunctionComponent<Options> = (props) => {
   const ref = useRef<HTMLDivElement>(null);
-  const props = createProps({ isOpen, duration, easing, ref });
+  const CustomTag = props.tagName ? props.tagName : "div";
+  const containerProps = createProps({ ...props, ref });
 
   return (
-    <div ref={ref} {...props}>
-      {children}
-    </div>
+    <CustomTag
+      ref={ref}
+      onChange={props.onChange}
+      onTransitionEnd={props.onTransitionEnd}
+      {...containerProps}
+    >
+      {props.children}
+    </CustomTag>
   );
 };
 
