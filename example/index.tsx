@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { render } from "react-dom";
 import Collapse from "../dist";
 import "./style.css";
@@ -9,11 +9,7 @@ const ExampleComponent = () => {
   return (
     <li>
       <button onClick={() => setIsOpen(!isOpen)}>Click me!</button>
-      <Collapse
-        onTransitionEnd={(e) => console.log(e)}
-        className="collapse-container"
-        isOpen={isOpen}
-      >
+      <Collapse className="collapse-container" isOpen={isOpen}>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas, mi vel ultrices
           lacinia, lacus nibh vestibulum nunc, ac fringilla nisl magna tempor mi.

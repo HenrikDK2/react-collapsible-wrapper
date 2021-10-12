@@ -13,6 +13,7 @@ export default {
     typescript({ tsconfig: "tsconfig.json" }),
     terser({
       output: { comments: false },
+      compress: { drop_console: true },
     }),
   ],
 };

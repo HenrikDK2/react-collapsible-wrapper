@@ -23,6 +23,7 @@ npm i react-collapsible-wrapper
 - tagName (`string`) | The wrapper tag | `div`
 - tabIndex
 - className
+- id
 - style
 - onTransitionEnd
 - onChange
