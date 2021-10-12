@@ -1,5 +1,43 @@
-import { CSSProperties, useEffect, useRef, useState } from "react";
-import { Options, CreatePropsProps } from "./types";
+import {
+  CSSProperties,
+  useEffect,
+  useRef,
+  useState,
+  forwardRef,
+  ReactElement,
+  RefObject,
+} from "react";
+
+enum TagName {
+  "div",
+  "article",
+  "section",
+  "ul",
+  "ol",
+  "li",
+}
+
+type Ref = React.MutableRefObject<HTMLElement>;
+
+type Options = {
+  children: ReactElement | ReactElement[];
+  isOpen: boolean;
+  updateAfterInitRender?: boolean;
+  duration?: number;
+  ref?: Ref;
+  easing?: string;
+  id?: string;
+  className?: string;
+  style?: CSSProperties;
+  tagName?: keyof typeof TagName;
+  tabIndex?: number;
+  onTransitionEnd?: React.TransitionEventHandler<HTMLElement>;
+  onChange?: React.FormEventHandler<HTMLElement>;
+};
+
+type CreatePropsProps = Options & {
+  ref: RefObject<HTMLElement> | Ref;
+};
 
 const defaultStyle: CSSProperties = { maxHeight: 0, overflow: "hidden" };
 
@@ -20,16 +58,14 @@ const createProps = ({ isOpen, duration, easing, style, ref }: CreatePropsProps)
   }
 };
 
-export default function (props: Options) {
+const Collapse = forwardRef((props: Options, refParent: Ref) => {
   const forceUpdate: () => void = useState()[1].bind(null, {});
-  const ref = useRef<HTMLElement>(null);
+  const ref = refParent || useRef<HTMLElement>(null);
   const CustomTag = props.tagName || "div";
 
   useEffect(() => {
-    if (props.isOpen) forceUpdate();
+    if (props.isOpen || props.updateAfterInitRender) forceUpdate();
   }, []);
-
-  console.log("update");
 
   return (
     <CustomTag
@@ -44,4 +80,6 @@ export default function (props: Options) {
       {props.children}
     </CustomTag>
   );
-}
+});
+
+export default Collapse as React.FC<Options>;
