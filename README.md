@@ -1,6 +1,7 @@
 # React collapsible component
 
 Lightwight collapsible wrapper that is easy to use and customizable.
+
 ![screen-gif](./example/example.gif)
 
 ## Install
