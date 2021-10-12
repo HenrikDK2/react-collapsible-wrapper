@@ -21,6 +21,7 @@ npm i react-collapsible-wrapper
 - duration (`number`) | Transition duration in seconds | `Based on content`
 - easing (`string`) | Acceleration curve | `linear`
 - tagName (`string`) | The wrapper tag | `div`
+- tabIndex
 - className
 - style
 - onTransitionEnd

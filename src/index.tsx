@@ -1,4 +1,4 @@
-import React, { useRef, FunctionComponent, RefObject, ReactElement, CSSProperties } from "react";
+import React, { useRef, RefObject, ReactElement, CSSProperties } from "react";
 
 enum tagName {
   "div",
@@ -8,6 +8,7 @@ enum tagName {
   "ol",
   "li",
 }
+
 type Options = {
   children: ReactElement | ReactElement[];
   isOpen: boolean;
@@ -16,6 +17,7 @@ type Options = {
   className?: string;
   style?: CSSProperties;
   tagName?: keyof typeof tagName;
+  tabIndex?: number;
   onTransitionEnd?: React.TransitionEventHandler<HTMLElement>;
   onChange?: React.FormEventHandler<HTMLElement>;
 };
@@ -51,7 +53,7 @@ const createProps = ({
   }
 };
 
-const Collapse: FunctionComponent<Options> = (props) => {
+export default function (props: Options) {
   const ref = useRef<HTMLDivElement>(null);
   const CustomTag = props.tagName ? props.tagName : "div";
   const containerProps = createProps({ ...props, ref });
@@ -59,6 +61,7 @@ const Collapse: FunctionComponent<Options> = (props) => {
   return (
     <CustomTag
       ref={ref}
+      tabIndex={props.tabIndex}
       onChange={props.onChange}
       onTransitionEnd={props.onTransitionEnd}
       {...containerProps}
@@ -66,6 +69,4 @@ const Collapse: FunctionComponent<Options> = (props) => {
       {props.children}
     </CustomTag>
   );
-};
-
-export default React.memo(Collapse);
+}

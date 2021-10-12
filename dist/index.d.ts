@@ -15,8 +15,9 @@ declare type Options = {
     className?: string;
     style?: CSSProperties;
     tagName?: keyof typeof tagName;
+    tabIndex?: number;
     onTransitionEnd?: React.TransitionEventHandler<HTMLElement>;
     onChange?: React.FormEventHandler<HTMLElement>;
 };
-declare const _default: React.NamedExoticComponent<Options>;
-export default _default;
+export default function (props: Options): JSX.Element;
+export {};
