@@ -55,8 +55,7 @@ const createProps = ({
 
 export default function (props: Options) {
   const ref = useRef<HTMLDivElement>(null);
-  const CustomTag = props.tagName ? props.tagName : "div";
-  const containerProps = createProps({ ...props, ref });
+  const CustomTag = props.tagName || "div";
 
   return (
     <CustomTag
@@ -64,7 +63,7 @@ export default function (props: Options) {
       tabIndex={props.tabIndex}
       onChange={props.onChange}
       onTransitionEnd={props.onTransitionEnd}
-      {...containerProps}
+      {...createProps({ ...props, ref })}
     >
       {props.children}
     </CustomTag>
