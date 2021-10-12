@@ -8,11 +8,16 @@ Lightwight collapsible wrapper that is easy to use and customizable.
 npm i react-collapsible-wrapper
 ```
 
-## Options
+## All Properties
 
 - isOpen (`required`) Tells the wrapper if it should collapse or not
 - duration (default `is calculated based on content`) Transition duration in seconds
 - easing (default `linear`) - Acceleration curve for transition
+- tagName (default `div`) - The wrapper tag
+- className
+- style
+- onTransitionEnd
+- onChange
 
 ## Simple Example:
 
