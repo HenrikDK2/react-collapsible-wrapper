@@ -1,6 +1,6 @@
 # React collapsible wrapper
 
-Lightwight collapsible wrapper that is easy to use and customizable.
+Lightweight collapsible wrapper that is easy to use and customizable.
 
 ![screen-gif](https://raw.githubusercontent.com/HenrikDK2/react-collapsible-wrapper/main/example/example.gif)
 
