@@ -1,4 +1,4 @@
-# React collapsible component
+# React collapsible wrapper
 
 Lightwight collapsible wrapper that is easy to use and customizable.
 
