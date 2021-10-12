@@ -1,6 +1,7 @@
 # React collapsible component
 
 Lightwight collapsible wrapper that is easy to use and customizable.
+![screen-gif](./example/example.gif)
 
 ## Install
 
@@ -8,12 +9,17 @@ Lightwight collapsible wrapper that is easy to use and customizable.
 npm i react-collapsible-wrapper
 ```
 
-## All Properties
+## Properties
 
-- isOpen (`required`) Tells the wrapper if it should collapse or not
-- duration (default `is calculated based on content`) Transition duration in seconds
-- easing (default `linear`) - Acceleration curve for transition
-- tagName (default `div`) - The wrapper tag
+### Required
+
+- isOpen (`boolean`) If wrapper should collapse or not
+
+### Optional
+
+- duration (`number`) | Transition duration in seconds | `Based on content`
+- easing (`string`) | Acceleration curve | `linear`
+- tagName (`string`) | The wrapper tag | `div`
 - className
 - style
 - onTransitionEnd
@@ -30,23 +36,10 @@ const ExampleComponent = () => {
 
   return (
     <article>
-      <h1>Lorem is god</h1>
-
-      <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-        been the industrys standard dummy text ever since the 1500s
-      </p>
-
       <Collapse isOpen={isOpen}>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas, mi vel ultrices
           lacinia, lacus nibh vestibulum nunc, ac fringilla nisl magna tempor mi.
-        </p>
-
-        <p>
-          Quisque sollicitudin metus sit amet nunc malesuada, quis lobortis velit fermentum. Mauris
-          sodales nisi id ipsum facilisis auctor. Nullam sit amet magna non lectus elementum
-          interdum pharetra id nulla.
         </p>
       </Collapse>
 

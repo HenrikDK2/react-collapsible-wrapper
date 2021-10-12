@@ -1,0 +1,21 @@
+body {
+  margin-top: 200px;
+}
+
+ul {
+  margin: 0 auto;
+  max-width: 500px;
+  width: 100%;
+  list-style: none;
+}
+
+button {
+  font-size: 2rem;
+  width: 100%;
+  cursor: pointer;
+  border: 2px solid;
+}
+
+.collapse-container {
+  font-size: 1rem;
+}

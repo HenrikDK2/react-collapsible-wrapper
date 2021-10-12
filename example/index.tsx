@@ -7,14 +7,8 @@ const ExampleComponent = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <article>
-      <h1>Lorem is god</h1>
-
-      <p>
-        Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
-        been the industrys standard dummy text ever since the 1500s
-      </p>
-
+    <li>
+      <button onClick={() => setIsOpen(!isOpen)}>Click me!</button>
       <Collapse
         onTransitionEnd={(e) => console.log(e)}
         className="collapse-container"
@@ -24,17 +18,19 @@ const ExampleComponent = () => {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas, mi vel ultrices
           lacinia, lacus nibh vestibulum nunc, ac fringilla nisl magna tempor mi.
         </p>
-
-        <p>
-          Quisque sollicitudin metus sit amet nunc malesuada, quis lobortis velit fermentum. Mauris
-          sodales nisi id ipsum facilisis auctor. Nullam sit amet magna non lectus elementum
-          interdum pharetra id nulla.
-        </p>
       </Collapse>
-
-      <button onClick={() => setIsOpen(!isOpen)}>Click me!</button>
-    </article>
+    </li>
   );
 };
 
-render(<ExampleComponent />, document.getElementById("react"));
+const App = () => {
+  return (
+    <ul>
+      <ExampleComponent />
+      <ExampleComponent />
+      <ExampleComponent />
+    </ul>
+  );
+};
+
+render(<App />, document.getElementById("react"));
