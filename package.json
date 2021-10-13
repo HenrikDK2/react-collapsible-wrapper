@@ -13,7 +13,7 @@
     "wrapper",
     "component",
     "slide-down",
-    "dropdown,
+    "dropdown",
     "slide-up"
   ],
   "main": "dist/index.js",
