@@ -21,7 +21,7 @@ npm i react-collapsible-wrapper
 - duration (`number`) | Transition duration in seconds | `Based on content`
 - easing (`string`) | Acceleration curve | `linear`
 - tagName (`string`) | The wrapper tag | `div`
-- ref (`MutableRefObject<HTMLElement>`) | Get element reference | `Interally created`
+- ref (`MutableRefObject<HTMLElement>`) | Get element reference | `Internally created`
 - updateAfterInitRender: (`boolean`) | Force update after initial render | `false`
 - tabIndex
 - className
