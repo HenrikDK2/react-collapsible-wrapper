@@ -1,3 +1,4 @@
+import React from "react";
 import { CSSProperties, ReactElement } from "react";
 declare enum TagName {
     "div" = 0,
@@ -12,6 +13,7 @@ declare type Options = {
     children: ReactElement | ReactElement[];
     isOpen: boolean;
     updateAfterInitRender?: boolean;
+    updateHeightOnResize?: boolean;
     duration?: number;
     ref?: Ref;
     easing?: string;
@@ -23,5 +25,5 @@ declare type Options = {
     onTransitionEnd?: React.TransitionEventHandler<HTMLElement>;
     onChange?: React.FormEventHandler<HTMLElement>;
 };
-declare const _default: import("react").FC<Options>;
+declare const _default: React.FC<Options>;
 export default _default;
