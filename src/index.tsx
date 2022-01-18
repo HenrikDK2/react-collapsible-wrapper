@@ -1,12 +1,5 @@
-import {
-  CSSProperties,
-  useEffect,
-  useRef,
-  useState,
-  forwardRef,
-  ReactElement,
-  RefObject,
-} from "react";
+import React from "react";
+import { CSSProperties, useEffect, useRef, useState, forwardRef, ReactElement, RefObject } from "react";
 
 enum TagName {
   "div",
@@ -23,6 +16,7 @@ type Options = {
   children: ReactElement | ReactElement[];
   isOpen: boolean;
   updateAfterInitRender?: boolean;
+  updateHeightOnResize?: boolean;
   duration?: number;
   ref?: Ref;
   easing?: string;
@@ -66,6 +60,17 @@ const Collapse = forwardRef((props: Options, refParent: Ref) => {
   useEffect(() => {
     if (props.isOpen || props.updateAfterInitRender) forceUpdate();
   }, []);
+
+  useEffect(() => {
+    if (ref && props.updateHeightOnResize) {
+      const resizeFunc = () => {
+        const target = ref.current;
+        if (target.getAttribute("aria-hidden") === "false") target.style.maxHeight = target.scrollHeight + "px";
+      };
+      window.addEventListener("resize", resizeFunc, { passive: true });
+      return () => window.removeEventListener("resize", resizeFunc);
+    }
+  }, [ref, props.updateHeightOnResize]);
 
   return (
     <CustomTag

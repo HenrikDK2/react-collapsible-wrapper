@@ -23,6 +23,7 @@ npm i react-collapsible-wrapper
 - tagName (`string`) | The wrapper tag | `div`
 - ref (`MutableRefObject<HTMLElement>`) | Get element reference | `Internally created`
 - updateAfterInitRender: (`boolean`) | Force update after initial render | `false`
+- updateHeightOnResize: (`boolean`) | Recalculate height on window resize | `false`
 - tabIndex
 - className
 - id
@@ -43,8 +44,8 @@ const ExampleComponent = () => {
     <article>
       <Collapse isOpen={isOpen}>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas, mi vel ultrices
-          lacinia, lacus nibh vestibulum nunc, ac fringilla nisl magna tempor mi.
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed egestas, mi vel ultrices lacinia, lacus nibh
+          vestibulum nunc, ac fringilla nisl magna tempor mi.
         </p>
       </Collapse>
 
