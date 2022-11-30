@@ -8,8 +8,8 @@ declare enum TagName {
     "ol" = 4,
     "li" = 5
 }
-declare type Ref = React.MutableRefObject<HTMLElement>;
-declare type Options = {
+type Ref = React.MutableRefObject<HTMLElement>;
+type Options = {
     children: ReactElement | ReactElement[];
     isOpen: boolean;
     updateAfterInitRender?: boolean;
